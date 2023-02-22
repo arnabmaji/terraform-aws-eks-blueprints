@@ -31,6 +31,7 @@ resource "helm_release" "addon" {
   wait_for_jobs              = try(var.helm_config["wait_for_jobs"], false)
   dependency_update          = try(var.helm_config["dependency_update"], false)
   replace                    = try(var.helm_config["replace"], false)
+  burst_limit                = try(var.helm_config["burst_limit"], null)
 
   postrender {
     binary_path = try(var.helm_config["postrender"], "")
